@@ -7,6 +7,7 @@
   "author": "Dylan Zhang",
   "license": "ISC",
   "dependencies": {
+    "ronin-database": "^0.1.1",
     "ronin-mocks": "^0.1.11",
     "ronin-server": "^0.1.3"
   }
