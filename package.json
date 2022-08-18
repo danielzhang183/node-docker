@@ -13,6 +13,10 @@
     "ronin-server": "^0.1.3"
   },
   "scripts": {
+    "test": "mocha ./**/*.js",
     "debug": "nodemon --inspect=0.0.0.0:9229 server.js"
+  },
+  "devDependencies": {
+    "mocha": "^10.0.0"
   }
 }
