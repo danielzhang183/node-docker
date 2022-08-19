@@ -1,17 +1,16 @@
 # syntax=docker/dockerfile:1
-FROM node:14.15.4 as base
+FROM node:16-alpine as base
 
-WORKDIR /code
+WORKDIR /app
+RUN corepack enable
 
-COPY package.json package.json
-COPY package-lock.json package-lock.json
+COPY .npmrc package.json pnpm-lock.yaml ./
+RUN --mount=type=cache,id=pnpm-store,target=/root/.pnpm-store \
+    pnpm install --frozen-lockfile
+COPY . .
 
 FROM base as test
-RUN npm ci
-COPY . .
-RUN npm run test
+RUN pnpm run test
 
-FROM base as prod
-RUN npm ci --production
-COPY . .
+# FROM base as prod
 CMD [ "node", "server.js" ]

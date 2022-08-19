@@ -9,7 +9,7 @@ services:
    - 9229:9229
   environment:
    - SERVER_PORT=8000
-   - CONNECTIONSTRING=mongodb://mongo:27017/notes
+   - CONNECTIONSTRING=mongodb://mongo:27018/notes
   volumes:
    - ./:/app
   command: npm run debug
@@ -17,7 +17,7 @@ services:
  mongo:
   image: mongo:4.2.8
   ports:
-   - 27017:27017
+   - 27018:27018
   volumes:
    - mongodb:/data/db
    - mongodb_config:/data/configdb
